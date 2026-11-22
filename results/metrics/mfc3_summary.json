@@ -1,0 +1,252 @@
+{
+  "data": {
+    "features": "ECAPA-TDNN 192-D, z-scored on train",
+    "n_train": 184,
+    "d": 192
+  },
+  "covariance": {
+    "name": "ecapa_std_train",
+    "n": 184,
+    "d": 192,
+    "trace": 193.0491804355499,
+    "frobenius": 49.19011154656611,
+    "spectral": 27.618603726820652,
+    "rank": 183,
+    "min_eig": -1.0693457778655312e-15,
+    "condition_number_nonzero": 167847.97117280908,
+    "mean_abs_offdiag_corr": 0.20013757283036043,
+    "frac_abs_corr_gt_0.5": 0.03364965095986038,
+    "top_corr_pairs": [
+      [
+        72,
+        113,
+        -0.765143327673174
+      ],
+      [
+        73,
+        167,
+        -0.7534279772161205
+      ],
+      [
+        168,
+        185,
+        0.738504349280989
+      ],
+      [
+        119,
+        173,
+        0.736245816616164
+      ],
+      [
+        45,
+        46,
+        -0.7334984226304743
+      ]
+    ],
+    "X_frobenius": 187.95744204395217,
+    "X_spectral": 71.09292849509141,
+    "checks": {
+      "matches np.cov": true,
+      "symmetric": true,
+      "PSD (min λ ≥ -tol)": true,
+      "tr(C) = Σλ": true,
+      "‖C‖_F = sqrt(Σλ²)": true,
+      "‖C‖_2 = λ_max": true,
+      "rank ≤ n-1": true
+    }
+  },
+  "covariance_mfcc_contrast": {
+    "name": "mfcc_std_train",
+    "n": 184,
+    "d": 120,
+    "trace": 120.65573746303673,
+    "frobenius": 34.56203039673761,
+    "spectral": 27.898435503209456,
+    "rank": 120,
+    "min_eig": 0.003757770015003191,
+    "condition_number_nonzero": 7424.199829106823,
+    "mean_abs_offdiag_corr": 0.19348271702088818,
+    "frac_abs_corr_gt_0.5": 0.10378151260504202,
+    "top_corr_pairs": [
+      [
+        88,
+        108,
+        0.9352074400141634
+      ],
+      [
+        82,
+        102,
+        0.9291687733637245
+      ],
+      [
+        78,
+        98,
+        0.9284669582219426
+      ],
+      [
+        85,
+        105,
+        0.9268619079635513
+      ],
+      [
+        96,
+        116,
+        0.9247653754413139
+      ]
+    ],
+    "X_frobenius": 148.59340481910937,
+    "X_spectral": 71.45217769310696,
+    "checks": {
+      "matches np.cov": true,
+      "symmetric": true,
+      "PSD (min λ ≥ -tol)": true,
+      "tr(C) = Σλ": true,
+      "‖C‖_F = sqrt(Σλ²)": true,
+      "‖C‖_2 = λ_max": true,
+      "rank ≤ n-1": true
+    }
+  },
+  "pca": {
+    "variance_retained": {
+      "2": 0.24637096833499755,
+      "4": 0.4276674056862236,
+      "6": 0.5674615201641855,
+      "8": 0.6641185533878321,
+      "16": 0.7634919334091725,
+      "32": 0.8548203293496862,
+      "64": 0.94424255042005
+    },
+    "eigenvalues_top10": [
+      27.618603726820638,
+      19.94310979336347,
+      19.53725712112895,
+      15.461871525410258,
+      15.112880203512562,
+      11.874259026171426,
+      11.01601480073355,
+      7.643546246423142,
+      5.398341767382721,
+      2.7168892886978724
+    ],
+    "saved_datasets": [
+      "data/processed/features/ecapa_pca_k2.npz",
+      "data/processed/features/ecapa_pca_k4.npz",
+      "data/processed/features/ecapa_pca_k6.npz",
+      "data/processed/features/ecapa_pca_k8.npz",
+      "data/processed/features/ecapa_pca_k16.npz",
+      "data/processed/features/ecapa_pca_k32.npz",
+      "data/processed/features/ecapa_pca_k64.npz"
+    ]
+  },
+  "svd": {
+    "n_singular_values": 184,
+    "numerical_rank": 183,
+    "sigma_max": 71.09292849509143,
+    "sigma_min_nonzero": 0.17352751846380304,
+    "reconstruction": {
+      "2": {
+        "error_fro": 163.1692570477415,
+        "eckart_young": 163.16925704774158,
+        "relative": 0.868118097763779
+      },
+      "4": {
+        "error_fro": 142.194816724082,
+        "eckart_young": 142.19481672408207,
+        "relative": 0.7565266646416213
+      },
+      "6": {
+        "error_fro": 123.61520709104967,
+        "eckart_young": 123.61520709104973,
+        "relative": 0.657676576925022
+      },
+      "8": {
+        "error_fro": 108.9312615943349,
+        "eckart_young": 108.93126159433494,
+        "relative": 0.5795527988131606
+      },
+      "16": {
+        "error_fro": 91.4076418095407,
+        "eckart_young": 91.40764180954073,
+        "relative": 0.486320950187042
+      },
+      "32": {
+        "error_fro": 71.6163906350714,
+        "eckart_young": 71.6163906350714,
+        "relative": 0.3810245013779478
+      },
+      "64": {
+        "error_fro": 44.382419716135374,
+        "eckart_young": 44.38241971613538,
+        "relative": 0.23613015389811987
+      }
+    },
+    "checks": {
+      "λ_i = σ_i²/(n−1)": true,
+      "V = PCA eigenvectors up to sign (top 32)": true,
+      "U Σ Vᵀ reconstructs Xc": true,
+      "UᵀU = I and VᵀV = I": true,
+      "Eckart–Young error matches for all k": true,
+      "‖Xc‖_F = sqrt(Σσ²), ‖Xc‖_2 = σ_1": true,
+      "rank(Xc) = n−1": true
+    }
+  },
+  "checks": {
+    "cov: matches np.cov": true,
+    "cov: symmetric": true,
+    "cov: PSD (min λ ≥ -tol)": true,
+    "cov: tr(C) = Σλ": true,
+    "cov: ‖C‖_F = sqrt(Σλ²)": true,
+    "cov: ‖C‖_2 = λ_max": true,
+    "cov: rank ≤ n-1": true,
+    "pca: eigenvalues = sklearn explained_variance_ (top 32)": true,
+    "pca: |<v_i, v_i_sklearn>| = 1 (min 1.00000000)": true,
+    "pca: Z equal up to column sign": true,
+    "pca: Wᵀ W = I (orthonormal)": true,
+    "pca: Z_train columns uncorrelated, var = λ": true,
+    "pca: fit on train only (μ_pca = μ_train ≠ μ_test)": true,
+    "svd: λ_i = σ_i²/(n−1)": true,
+    "svd: V = PCA eigenvectors up to sign (top 32)": true,
+    "svd: U Σ Vᵀ reconstructs Xc": true,
+    "svd: UᵀU = I and VᵀV = I": true,
+    "svd: Eckart–Young error matches for all k": true,
+    "svd: ‖Xc‖_F = sqrt(Σσ²), ‖Xc‖_2 = σ_1": true,
+    "svd: rank(Xc) = n−1": true
+  },
+  "table": [
+    {
+      "concept": "Standardisation",
+      "equation": "X_std=(X−μ)/σ",
+      "file": "standardization.py",
+      "verified": "train μ≈0, σ=1 (Stage 4)",
+      "figure": "—"
+    },
+    {
+      "concept": "Covariance",
+      "equation": "C=XᵀX/(n−1)",
+      "file": "covariance.py",
+      "verified": true,
+      "figure": "results/figures/ecapa_covariance_heatmap.png"
+    },
+    {
+      "concept": "Matrix norms",
+      "equation": "‖C‖_F=√Σλ², ‖C‖_2=λmax",
+      "file": "covariance.py / svd.py",
+      "verified": true,
+      "figure": "—"
+    },
+    {
+      "concept": "PCA (eig)",
+      "equation": "Cvᵢ=λᵢvᵢ, Z=XW_k",
+      "file": "pca.py",
+      "verified": true,
+      "figure": "results/figures/pca_explained_variance.png, results/figures/pca_2d_speakers.png"
+    },
+    {
+      "concept": "SVD",
+      "equation": "X=UΣVᵀ, λᵢ=σᵢ²/(n−1)",
+      "file": "svd.py",
+      "verified": true,
+      "figure": "results/figures/svd_spectrum.png"
+    }
+  ]
+}

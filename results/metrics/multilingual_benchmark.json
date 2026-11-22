@@ -1,0 +1,239 @@
+{
+  "protocol": "v2 Upgrade 1: language-agnostic speaker models on the 8-language benchmark.\n\nECAPA-TDNN (192-D, L2) for every clip in data/metadata/multilingual_splits.csv, then on identical splits:\n  * Cosine to enrolled centroids (reference)\n  * Classical RBF-SVM (192-D, z-scored)          (C, γ) tuned on val\n  * Classical RBF-SVM (PCA-6)                     PCA fit on train\n  * Hybrid quantum ZZ fidelity-kernel SVM (6 qubits, angle x = α·π·tanh(z/σ)), (C, α) tuned on val\nScores are RAW max one-vs-rest decision values (no Platt). τ per model is chosen on val (known) +\nimpostor_cal (kn/ta/ml/pa impostors); AUROC / TRR / FAR are reported on test + impostor_test (hi/te/bn/en).\nOutputs: results/models/multilingual/routers.joblib, results/metrics/multilingual_benchmark.json\n\nUsage (project root):  .venv\\Scripts\\python.exe -m src.models.train_multilingual\n",
+  "n_clips": 272,
+  "n_enrolled_speakers": 16,
+  "n_impostors": 8,
+  "split_sizes": {
+    "train": 144,
+    "impostor_cal": 32,
+    "val": 32,
+    "test": 32,
+    "impostor_test": 32
+  },
+  "per_language_split_counts": {
+    "bn": {
+      "impostor_cal": 0,
+      "impostor_test": 8,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "en": {
+      "impostor_cal": 0,
+      "impostor_test": 8,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "hi": {
+      "impostor_cal": 0,
+      "impostor_test": 8,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "kn": {
+      "impostor_cal": 8,
+      "impostor_test": 0,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "ml": {
+      "impostor_cal": 8,
+      "impostor_test": 0,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "pa": {
+      "impostor_cal": 8,
+      "impostor_test": 0,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "ta": {
+      "impostor_cal": 8,
+      "impostor_test": 0,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    },
+    "te": {
+      "impostor_cal": 0,
+      "impostor_test": 8,
+      "test": 4,
+      "train": 18,
+      "val": 4
+    }
+  },
+  "pca_k6_explained_variance": 0.43156188927526856,
+  "hyperparameters": {
+    "rbf_192": {
+      "C": 0.1,
+      "gamma": 0.00032552084303461015
+    },
+    "rbf_pca6": {
+      "C": 0.1,
+      "gamma": 0.0007542854291386902
+    },
+    "quantum_k6": {
+      "C": 1,
+      "alpha": 0.02
+    }
+  },
+  "tau": {
+    "cosine": 0.6517330408096313,
+    "rbf_192": 15.133019747002974,
+    "rbf_pca6": 15.174113980651445,
+    "quantum_k6": 15.308746453954361
+  },
+  "KTA_train": {
+    "rbf_192": 0.8399415077400175,
+    "rbf_pca6": 0.6039537282222223,
+    "quantum_k6": 0.6062236142101342
+  },
+  "kkt_ok": {
+    "rbf_192": true,
+    "rbf_pca6": true,
+    "quantum_k6": true
+  },
+  "quantum_kernel": {
+    "symmetric": true,
+    "unit_diagonal": true,
+    "PSD": true,
+    "offdiag_mean": 0.4002375452263411
+  },
+  "results": {
+    "cosine": {
+      "name": "Cosine (ECAPA-192)",
+      "test_accuracy": 1.0,
+      "test_macro_precision": 1.0,
+      "test_macro_recall": 1.0,
+      "test_macro_f1": 1.0,
+      "test_weighted_precision": 1.0,
+      "test_weighted_recall": 1.0,
+      "test_weighted_f1": 1.0,
+      "per_language_accuracy": {
+        "Kannada": 1.0,
+        "English": 1.0,
+        "Hindi": 1.0,
+        "Tamil": 1.0,
+        "Telugu": 1.0,
+        "Malayalam": 1.0,
+        "Bengali": 1.0,
+        "Punjabi": 1.0
+      },
+      "errors": 0,
+      "cross_language_errors": 0,
+      "open_set": {
+        "tau": 0.6517330408096313,
+        "CCR": 1.0,
+        "FRR": 0.0,
+        "TRR": 1.0,
+        "FAR": 0.0,
+        "balanced_open_acc": 1.0,
+        "AUROC_known_vs_unknown": 1.0
+      }
+    },
+    "rbf_192": {
+      "name": "Classical RBF-SVM (192-D)",
+      "test_accuracy": 1.0,
+      "test_macro_precision": 1.0,
+      "test_macro_recall": 1.0,
+      "test_macro_f1": 1.0,
+      "test_weighted_precision": 1.0,
+      "test_weighted_recall": 1.0,
+      "test_weighted_f1": 1.0,
+      "per_language_accuracy": {
+        "Kannada": 1.0,
+        "English": 1.0,
+        "Hindi": 1.0,
+        "Tamil": 1.0,
+        "Telugu": 1.0,
+        "Malayalam": 1.0,
+        "Bengali": 1.0,
+        "Punjabi": 1.0
+      },
+      "errors": 0,
+      "cross_language_errors": 0,
+      "open_set": {
+        "tau": 15.133019747002974,
+        "CCR": 1.0,
+        "FRR": 0.0,
+        "TRR": 0.96875,
+        "FAR": 0.03125,
+        "balanced_open_acc": 0.984375,
+        "AUROC_known_vs_unknown": 1.0
+      }
+    },
+    "rbf_pca6": {
+      "name": "Classical RBF-SVM (PCA-6)",
+      "test_accuracy": 1.0,
+      "test_macro_precision": 1.0,
+      "test_macro_recall": 1.0,
+      "test_macro_f1": 1.0,
+      "test_weighted_precision": 1.0,
+      "test_weighted_recall": 1.0,
+      "test_weighted_f1": 1.0,
+      "per_language_accuracy": {
+        "Kannada": 1.0,
+        "English": 1.0,
+        "Hindi": 1.0,
+        "Tamil": 1.0,
+        "Telugu": 1.0,
+        "Malayalam": 1.0,
+        "Bengali": 1.0,
+        "Punjabi": 1.0
+      },
+      "errors": 0,
+      "cross_language_errors": 0,
+      "open_set": {
+        "tau": 15.174113980651445,
+        "CCR": 0.90625,
+        "FRR": 0.09375,
+        "TRR": 0.96875,
+        "FAR": 0.03125,
+        "balanced_open_acc": 0.9375,
+        "AUROC_known_vs_unknown": 0.9912109375
+      }
+    },
+    "quantum_k6": {
+      "name": "Hybrid Quantum ZZ-SVM (6 qubits)",
+      "test_accuracy": 1.0,
+      "test_macro_precision": 1.0,
+      "test_macro_recall": 1.0,
+      "test_macro_f1": 1.0,
+      "test_weighted_precision": 1.0,
+      "test_weighted_recall": 1.0,
+      "test_weighted_f1": 1.0,
+      "per_language_accuracy": {
+        "Kannada": 1.0,
+        "English": 1.0,
+        "Hindi": 1.0,
+        "Tamil": 1.0,
+        "Telugu": 1.0,
+        "Malayalam": 1.0,
+        "Bengali": 1.0,
+        "Punjabi": 1.0
+      },
+      "errors": 0,
+      "cross_language_errors": 0,
+      "open_set": {
+        "tau": 15.308746453954361,
+        "CCR": 0.9375,
+        "FRR": 0.0625,
+        "TRR": 0.96875,
+        "FAR": 0.03125,
+        "balanced_open_acc": 0.953125,
+        "AUROC_known_vs_unknown": 0.9658203125
+      }
+    }
+  },
+  "runtime_s": {
+    "embedding": 125.77155449999555,
+    "quantum_states_all_alphas": 7.723246000001382,
+    "total": 134.39418889999797
+  }
+}

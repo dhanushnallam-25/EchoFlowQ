@@ -1,0 +1,227 @@
+{
+  "protocol": "Stage 12: robustness of the saved speaker classifiers to noise and short utterances.\n\nHeld-out data only: 47 enrolled TEST clips (closed-set accuracy) + 30 clips of never-seen unknown\nspeakers unk_03..05 (open-set AUROC, threshold-free, raw max decision score \u2014 no Platt scaling).\nConditions (applied identically to known and unknown clips, seeded per clip):\n  * SNR  : additive white Gaussian noise at exactly 20 / 10 / 5 / 0 dB relative to each clip's power\n  * Dur. : first 1 / 2 / 3 / 5 s of each VAD-trimmed clip (shorter clips are used whole; counted)\nEach degraded clip is re-embedded with ECAPA-TDNN and scored by every saved model through the same\ntransforms used in deployment (z-score -> [PCA-6 -> ZZ fidelity kernel]).\n\nUsage (project root):  .venv\\Scripts\\python.exe -m src.evaluation.robustness\n",
+  "n_known_test": 47,
+  "n_unknown_test": 30,
+  "unknown_speakers": [
+    "unk_03",
+    "unk_04",
+    "unk_05"
+  ],
+  "results": {
+    "snr": {
+      "clean": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9822695035460993
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9879432624113476
+        },
+        "rbf_pca6": {
+          "accuracy": 1.0,
+          "auroc": 0.9921985815602836
+        },
+        "quantum_k6": {
+          "accuracy": 1.0,
+          "auroc": 0.976595744680851
+        }
+      },
+      "20 dB": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.970921985815603
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9900709219858156
+        },
+        "rbf_pca6": {
+          "accuracy": 1.0,
+          "auroc": 0.9893617021276596
+        },
+        "quantum_k6": {
+          "accuracy": 0.8936170212765957,
+          "auroc": 0.9617021276595745
+        }
+      },
+      "10 dB": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9666666666666667
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9787234042553192
+        },
+        "rbf_pca6": {
+          "accuracy": 0.9787234042553191,
+          "auroc": 0.9709219858156027
+        },
+        "quantum_k6": {
+          "accuracy": 0.8723404255319149,
+          "auroc": 0.9617021276595744
+        }
+      },
+      "5 dB": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9510638297872341
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9645390070921986
+        },
+        "rbf_pca6": {
+          "accuracy": 0.9148936170212766,
+          "auroc": 0.9368794326241134
+        },
+        "quantum_k6": {
+          "accuracy": 0.851063829787234,
+          "auroc": 0.9368794326241134
+        }
+      },
+      "0 dB": {
+        "cosine": {
+          "accuracy": 0.9787234042553191,
+          "auroc": 0.9241134751773049
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.948936170212766
+        },
+        "rbf_pca6": {
+          "accuracy": 0.851063829787234,
+          "auroc": 0.8992907801418439
+        },
+        "quantum_k6": {
+          "accuracy": 0.7446808510638298,
+          "auroc": 0.8957446808510638
+        }
+      }
+    },
+    "dur": {
+      "full": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9822695035460993
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9879432624113476
+        },
+        "rbf_pca6": {
+          "accuracy": 1.0,
+          "auroc": 0.9921985815602836
+        },
+        "quantum_k6": {
+          "accuracy": 1.0,
+          "auroc": 0.976595744680851
+        }
+      },
+      "1 s": {
+        "cosine": {
+          "accuracy": 0.9787234042553191,
+          "auroc": 0.8787234042553191
+        },
+        "rbf_192": {
+          "accuracy": 0.9361702127659575,
+          "auroc": 0.9269503546099291
+        },
+        "rbf_pca6": {
+          "accuracy": 0.851063829787234,
+          "auroc": 0.9191489361702129
+        },
+        "quantum_k6": {
+          "accuracy": 0.574468085106383,
+          "auroc": 0.802127659574468
+        }
+      },
+      "2 s": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9716312056737588
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9914893617021276
+        },
+        "rbf_pca6": {
+          "accuracy": 0.9787234042553191,
+          "auroc": 0.9808510638297872
+        },
+        "quantum_k6": {
+          "accuracy": 0.851063829787234,
+          "auroc": 0.8978723404255319
+        }
+      },
+      "3 s": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9822695035460993
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9921985815602836
+        },
+        "rbf_pca6": {
+          "accuracy": 1.0,
+          "auroc": 0.9950354609929077
+        },
+        "quantum_k6": {
+          "accuracy": 0.9574468085106383,
+          "auroc": 0.9503546099290779
+        }
+      },
+      "5 s": {
+        "cosine": {
+          "accuracy": 1.0,
+          "auroc": 0.9829787234042553
+        },
+        "rbf_192": {
+          "accuracy": 1.0,
+          "auroc": 0.9879432624113476
+        },
+        "rbf_pca6": {
+          "accuracy": 1.0,
+          "auroc": 0.9914893617021276
+        },
+        "quantum_k6": {
+          "accuracy": 1.0,
+          "auroc": 0.9609929078014184
+        }
+      }
+    }
+  },
+  "duration_notes": {
+    "1 s": {
+      "known_shorter_than_d": 0,
+      "unknown_shorter_than_d": 0
+    },
+    "2 s": {
+      "known_shorter_than_d": 1,
+      "unknown_shorter_than_d": 0
+    },
+    "3 s": {
+      "known_shorter_than_d": 1,
+      "unknown_shorter_than_d": 7
+    },
+    "5 s": {
+      "known_shorter_than_d": 3,
+      "unknown_shorter_than_d": 11
+    }
+  },
+  "min_reliable_duration_s(acc>=0.95 & AUROC>=0.95)": {
+    "cosine": 2.0,
+    "rbf_192": 2.0,
+    "rbf_pca6": 2.0,
+    "quantum_k6": 3.0
+  },
+  "clip_duration_stats_s": {
+    "known_min": 1.82,
+    "known_median": 7.869,
+    "unknown_min": 2.11,
+    "unknown_median": 5.904
+  },
+  "runtime_s": 1170.7151663999975
+}

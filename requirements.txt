@@ -1,0 +1,45 @@
+# EchoFlow-Q — Python 3.14 (Windows, CPU). Resolved & verified 2026-11-20.
+# On Colab: `pip install -r requirements.txt` works as-is (Colab's CUDA torch is kept if already present).
+
+# --- Deep learning / audio ---
+torch>=2.15,<2.16
+torchaudio>=2.11,<2.16
+speechbrain>=1.1,<1.2          # pretrained ECAPA-TDNN (speechbrain/spkrec-ecapa-voxceleb)
+silero-vad>=6.2,<7             # voice activity detection
+librosa>=1.0,<1.1              # MFCC baseline
+soundfile>=0.13
+
+# --- Classical ML + MFC-3 math ---
+numpy>=2.5,<2.6
+scipy>=1.18,<1.19
+scikit-learn>=1.9,<1.10
+pandas>=2.2
+matplotlib>=3.9
+seaborn>=0.13
+
+# --- Quantum ---
+qiskit>=2.6,<2.7
+qiskit-machine-learning>=0.9,<0.10
+pylatexenc>=2.10              # qiskit matplotlib circuit drawer
+
+# --- Datasets (stream only; never full download) ---
+datasets>=5.2,<5.3
+huggingface_hub>=0.30
+
+# --- Evaluation ---
+pyannote.metrics>=3.2          # DER (missed speech / false alarm / confusion)
+jiwer>=4.0                     # ASR WER / CER
+deep-translator>=1.11            # translation fallback when Gnani key lacks LLM scope
+edge-tts>=7.0                    # TTS fallback (Gnani timbre-v3.0 is primary)
+
+# --- App / config ---
+python-dotenv>=1.0
+requests>=2.32
+fastapi>=0.115
+uvicorn>=0.30
+python-multipart>=0.0.9
+streamlit>=1.40
+
+# --- Dev ---
+ipykernel>=6.29
+tqdm>=4.66

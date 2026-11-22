@@ -1,0 +1,1003 @@
+{
+  "protocol": "Stage 8 runner: diarization + enrolled-speaker routing, two evaluation tracks.\n\nTrack A — synthetic group discussions (deterministic, seed 42):\n  VAL mixtures  : val clips (10 enrolled) + unk_01..02  -> tune AHC method/threshold and router τ's\n  TEST mixtures : test clips + unk_03..05                -> report (never used for tuning)\n  Each: 3–4 enrolled speakers + 1 unknown, 45–60 s, 0.3–1.0 s pauses, per-speaker gain, −55 dBFS noise floor.\n  Metrics: DER (collar 0.25 s; miss / FA / confusion), identification error rate with routed labels,\n           cluster-routing accuracy, unknown-cluster rejection, known false rejection — per router.\nTrack B — sarvamai/indic-diarbench Kannada (test), first N recordings, real group conversations:\n  unsupervised DER (overlap scored and overlap-excluded), oracle-k DER, and routing false-acceptance\n  (none of these speakers is enrolled, so every cluster should be 'Unknown').\n\nUsage (project root):  .venv\\Scripts\\python.exe -m src.diarization.evaluate_diarization [--n-diarbench 4]\n",
+  "collar": 0.25,
+  "clustering_selected_on_val": {
+    "method": "threshold",
+    "threshold": 0.75,
+    "min_windows": 1,
+    "k_err": 3,
+    "DER": 0.046504333402642616,
+    "miss": 0.04646741441884208,
+    "false_alarm": 3.691898380054061e-05,
+    "confusion": 0.0
+  },
+  "clustering_val_grid": [
+    {
+      "method": "threshold",
+      "threshold": 0.3,
+      "min_windows": 1,
+      "k_err": 144,
+      "DER": 0.8391941973990132,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.7926898639963706
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.35,
+      "min_windows": 1,
+      "k_err": 118,
+      "DER": 0.7904812227094872,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.7439768893068446
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.4,
+      "min_windows": 1,
+      "k_err": 90,
+      "DER": 0.6941799732529347,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.6476756398502921
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.45,
+      "min_windows": 1,
+      "k_err": 65,
+      "DER": 0.5984413691095023,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.5519370357068597
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.5,
+      "min_windows": 1,
+      "k_err": 44,
+      "DER": 0.4616825250930949,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.4151781916904523
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.55,
+      "min_windows": 1,
+      "k_err": 26,
+      "DER": 0.2765417958338847,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.2300374624312421
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.6,
+      "min_windows": 1,
+      "k_err": 12,
+      "DER": 0.16224180339489258,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.11573746999224996
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.65,
+      "min_windows": 1,
+      "k_err": 9,
+      "DER": 0.1125559396442546,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.06605160624161198
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.7,
+      "min_windows": 1,
+      "k_err": 5,
+      "DER": 0.05294448093680892,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.006440147534166302
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.75,
+      "min_windows": 1,
+      "k_err": 3,
+      "DER": 0.046504333402642616,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.0
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.8,
+      "min_windows": 1,
+      "k_err": 5,
+      "DER": 0.116557071432622,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.07005273802997938
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.85,
+      "min_windows": 1,
+      "k_err": 8,
+      "DER": 0.22962396981267602,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.1831196364100334
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.9,
+      "min_windows": 1,
+      "k_err": 12,
+      "DER": 0.4094022905128253,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.3628979571101827
+    },
+    {
+      "method": "silhouette",
+      "threshold": null,
+      "min_windows": 1,
+      "k_err": 3,
+      "DER": 0.046504333402642616,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.0
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.3,
+      "min_windows": 3,
+      "k_err": 69,
+      "DER": 0.6444935187985558,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.5979891853959132
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.35,
+      "min_windows": 3,
+      "k_err": 10,
+      "DER": 0.4547922613084325,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.4082879279057898
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.4,
+      "min_windows": 3,
+      "k_err": 3,
+      "DER": 0.40714698363041807,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.3606426502277754
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.45,
+      "min_windows": 3,
+      "k_err": 8,
+      "DER": 0.4629168005595147,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.416412467156872
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.5,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.3702085066064307,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.3237041732037881
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.55,
+      "min_windows": 3,
+      "k_err": 3,
+      "DER": 0.17484358164943392,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.1283392482467913
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.6,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.08354913709997548,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.037044803697332866
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.65,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.05497738786080189,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.008473054458159272
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.7,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.05497738786080189,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.008473054458159272
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.75,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.05497738786080189,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.008473054458159272
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.8,
+      "min_windows": 3,
+      "k_err": 6,
+      "DER": 0.12503012589078127,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.07852579248813865
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.85,
+      "min_windows": 3,
+      "k_err": 9,
+      "DER": 0.2380970242708353,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.19159269086819267
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.9,
+      "min_windows": 3,
+      "k_err": 13,
+      "DER": 0.41787534497098455,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.37137101156834196
+    },
+    {
+      "method": "silhouette",
+      "threshold": null,
+      "min_windows": 3,
+      "k_err": 4,
+      "DER": 0.05497738786080189,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.008473054458159272
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.3,
+      "min_windows": 5,
+      "k_err": 144,
+      "DER": 0.8391941973990132,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.7926898639963706
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.35,
+      "min_windows": 5,
+      "k_err": 99,
+      "DER": 0.7509885427102433,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.7044842093076007
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.4,
+      "min_windows": 5,
+      "k_err": 31,
+      "DER": 0.45752160794283886,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.4110172745401962
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.45,
+      "min_windows": 5,
+      "k_err": 13,
+      "DER": 0.40068822892841616,
+      "miss": 0.046467414418842085,
+      "false_alarm": 3.6918983800540613e-05,
+      "confusion": 0.3541838955257735
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.5,
+      "min_windows": 5,
+      "k_err": 8,
+      "DER": 0.2733431350774058,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.22683880167476322
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.55,
+      "min_windows": 5,
+      "k_err": 7,
+      "DER": 0.2443200881802545,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.19781575477761187
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.6,
+      "min_windows": 5,
+      "k_err": 7,
+      "DER": 0.12025989783188103,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.0737555644292384
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.65,
+      "min_windows": 5,
+      "k_err": 7,
+      "DER": 0.12025989783188103,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.0737555644292384
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.7,
+      "min_windows": 5,
+      "k_err": 5,
+      "DER": 0.07645065024667794,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.02994631684403532
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.75,
+      "min_windows": 5,
+      "k_err": 5,
+      "DER": 0.07645065024667794,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.02994631684403532
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.8,
+      "min_windows": 5,
+      "k_err": 7,
+      "DER": 0.14650338827665732,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.0999990548740147
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.85,
+      "min_windows": 5,
+      "k_err": 10,
+      "DER": 0.25957028665671134,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.2130659532540687
+    },
+    {
+      "method": "threshold",
+      "threshold": 0.9,
+      "min_windows": 5,
+      "k_err": 13,
+      "DER": 0.41787534497098455,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.37137101156834196
+    },
+    {
+      "method": "silhouette",
+      "threshold": null,
+      "min_windows": 5,
+      "k_err": 5,
+      "DER": 0.07645065024667794,
+      "miss": 0.04646741441884208,
+      "false_alarm": 3.691898380054061e-05,
+      "confusion": 0.02994631684403532
+    }
+  ],
+  "routers_tau": {
+    "cosine": 0.6890214681625366,
+    "rbf_192": 9.292494442027017,
+    "rbf_pca6": 9.289760065978776,
+    "quantum_k6": 9.239641964443983
+  },
+  "trackA": {
+    "mixtures": [
+      {
+        "name": "test_mix01",
+        "ref": [
+          [
+            0.4549375,
+            2.2749375,
+            "spk_03"
+          ],
+          [
+            3.0099375,
+            11.0099375,
+            "spk_08"
+          ],
+          [
+            11.3819375,
+            19.3819375,
+            "spk_07"
+          ],
+          [
+            20.152124999999998,
+            28.152124999999998,
+            "spk_08"
+          ],
+          [
+            28.986562499999998,
+            36.9865625,
+            "spk_03"
+          ],
+          [
+            37.687374999999996,
+            40.534375,
+            "unk_03"
+          ],
+          [
+            41.082187499999996,
+            47.192187499999996,
+            "spk_03"
+          ]
+        ],
+        "dur": 47.6921875,
+        "speakers": [
+          "spk_07",
+          "spk_08",
+          "spk_03",
+          "unk_03"
+        ],
+        "unknown": "unk_03"
+      },
+      {
+        "name": "test_mix02",
+        "ref": [
+          [
+            0.4343125,
+            7.7303125,
+            "unk_04"
+          ],
+          [
+            8.031812500000001,
+            16.0318125,
+            "spk_01"
+          ],
+          [
+            16.3361875,
+            18.6351875,
+            "unk_04"
+          ],
+          [
+            19.1595,
+            27.1595,
+            "spk_04"
+          ],
+          [
+            27.56175,
+            33.25775,
+            "unk_04"
+          ],
+          [
+            33.799687500000005,
+            39.3976875,
+            "spk_01"
+          ],
+          [
+            40.353750000000005,
+            48.353750000000005,
+            "spk_04"
+          ]
+        ],
+        "dur": 48.85375,
+        "speakers": [
+          "spk_02",
+          "spk_10",
+          "spk_01",
+          "spk_04",
+          "unk_04"
+        ],
+        "unknown": "unk_04"
+      },
+      {
+        "name": "test_mix03",
+        "ref": [
+          [
+            0.81275,
+            8.68175,
+            "spk_09"
+          ],
+          [
+            9.005312499999999,
+            17.0053125,
+            "unk_05"
+          ],
+          [
+            17.848875,
+            25.848875,
+            "spk_05"
+          ],
+          [
+            26.51825,
+            34.518249999999995,
+            "spk_06"
+          ],
+          [
+            34.9195625,
+            41.0405625,
+            "spk_05"
+          ],
+          [
+            41.453,
+            47.571000000000005,
+            "unk_05"
+          ]
+        ],
+        "dur": 48.071,
+        "speakers": [
+          "spk_06",
+          "spk_09",
+          "spk_05",
+          "unk_05"
+        ],
+        "unknown": "unk_05"
+      },
+      {
+        "name": "test_mix04",
+        "ref": [
+          [
+            0.4021875,
+            8.4021875,
+            "spk_08"
+          ],
+          [
+            9.0881875,
+            17.0881875,
+            "spk_02"
+          ],
+          [
+            17.6441875,
+            23.9441875,
+            "spk_08"
+          ],
+          [
+            24.8816875,
+            32.7506875,
+            "spk_09"
+          ],
+          [
+            33.6614375,
+            40.3444375,
+            "spk_06"
+          ],
+          [
+            41.124874999999996,
+            49.124874999999996,
+            "spk_08"
+          ]
+        ],
+        "dur": 49.624875,
+        "speakers": [
+          "spk_09",
+          "spk_06",
+          "spk_02",
+          "spk_08",
+          "unk_03"
+        ],
+        "unknown": "unk_03"
+      },
+      {
+        "name": "test_mix05",
+        "ref": [
+          [
+            0.7321875,
+            7.2261875,
+            "unk_04"
+          ],
+          [
+            7.8981875,
+            13.860187499999999,
+            "spk_04"
+          ],
+          [
+            14.492937499999998,
+            18.394937499999997,
+            "unk_04"
+          ],
+          [
+            18.733312499999997,
+            26.733312499999997,
+            "spk_10"
+          ],
+          [
+            27.391812499999997,
+            34.6878125,
+            "unk_04"
+          ],
+          [
+            35.1523125,
+            43.1523125,
+            "spk_07"
+          ],
+          [
+            43.801,
+            49.971000000000004,
+            "spk_04"
+          ]
+        ],
+        "dur": 50.471,
+        "speakers": [
+          "spk_04",
+          "spk_10",
+          "spk_07",
+          "unk_04"
+        ],
+        "unknown": "unk_04"
+      }
+    ],
+    "der": {
+      "selected": {
+        "DER": 0.1665808823529412,
+        "miss": 0.07679271708683476,
+        "false_alarm": 0.00024480625583565065,
+        "confusion": 0.08954335901027079,
+        "config": {
+          "method": "threshold",
+          "threshold": 0.75,
+          "min_windows": 1
+        },
+        "est_k": [
+          8,
+          3,
+          4,
+          10,
+          4
+        ]
+      },
+      "silhouette": {
+        "DER": 0.11883053221288516,
+        "miss": 0.07679271708683476,
+        "false_alarm": 0.00024480625583565065,
+        "confusion": 0.041793008870214754,
+        "config": {
+          "method": "silhouette",
+          "threshold": null,
+          "min_windows": 1
+        },
+        "est_k": [
+          5,
+          3,
+          4,
+          3,
+          4
+        ]
+      },
+      "no_merge": {
+        "DER": 0.1665808823529412,
+        "miss": 0.07679271708683476,
+        "false_alarm": 0.00024480625583565065,
+        "confusion": 0.08954335901027079,
+        "config": {
+          "method": "threshold",
+          "threshold": 0.75,
+          "min_windows": 1
+        },
+        "est_k": [
+          8,
+          3,
+          4,
+          10,
+          4
+        ]
+      },
+      "oracle_k": {
+        "DER": 0.15933852707749768,
+        "miss": 0.07679271708683476,
+        "false_alarm": 0.00024480625583565065,
+        "confusion": 0.08230100373482727
+      }
+    },
+    "estimated_k": [
+      8,
+      3,
+      4,
+      10,
+      4
+    ],
+    "true_k": [
+      4,
+      5,
+      4,
+      5,
+      4
+    ],
+    "routing": {
+      "cosine": {
+        "tau": 0.6890214681625366,
+        "cluster_routing_acc": 0.5862068965517241,
+        "n_clusters": 29,
+        "unknown_rejection_rate": 1.0,
+        "n_unknown_clusters": 4,
+        "known_false_rejection": 0.44,
+        "known_misid": 0.04,
+        "IER": 0.17060049019607845,
+        "IER_confusion": 0.09356296685340805
+      },
+      "rbf_192": {
+        "tau": 9.292494442027017,
+        "cluster_routing_acc": 0.5517241379310345,
+        "n_clusters": 29,
+        "unknown_rejection_rate": 1.0,
+        "n_unknown_clusters": 4,
+        "known_false_rejection": 0.52,
+        "known_misid": 0.0,
+        "IER": 0.23589927637721758,
+        "IER_confusion": 0.15886175303454717
+      },
+      "rbf_pca6": {
+        "tau": 9.289760065978776,
+        "cluster_routing_acc": 0.5862068965517241,
+        "n_clusters": 29,
+        "unknown_rejection_rate": 1.0,
+        "n_unknown_clusters": 4,
+        "known_false_rejection": 0.48,
+        "known_misid": 0.0,
+        "IER": 0.20063316993464053,
+        "IER_confusion": 0.12359564659197014
+      },
+      "quantum_k6": {
+        "tau": 9.239641964443983,
+        "cluster_routing_acc": 0.6551724137931034,
+        "n_clusters": 29,
+        "unknown_rejection_rate": 0.5,
+        "n_unknown_clusters": 4,
+        "known_false_rejection": 0.32,
+        "known_misid": 0.0,
+        "IER": 0.31149684873949585,
+        "IER_confusion": 0.2344593253968254
+      }
+    }
+  },
+  "trackB": {
+    "recordings": [
+      {
+        "name": "kannada_001",
+        "dur": 194.816,
+        "type": "Near field",
+        "true_k": 6,
+        "est_k": 16,
+        "der": {
+          "missed detection": 31.47153489148591,
+          "false alarm": 0.23000000000000398,
+          "confusion": 38.00900000000003,
+          "total": 165.67653489148591
+        },
+        "der_no_overlap": {
+          "missed detection": 8.847000000000037,
+          "false alarm": 0.23000000000000398,
+          "confusion": 27.90399999999996,
+          "total": 124.56999999999996
+        },
+        "der_oracle_k": {
+          "missed detection": 31.47153489148591,
+          "false alarm": 0.23000000000000398,
+          "confusion": 22.527000000000037,
+          "total": 165.67653489148591
+        },
+        "der_silhouette": {
+          "missed detection": 31.47153489148591,
+          "false alarm": 0.23000000000000398,
+          "confusion": 40.99399999999997,
+          "total": 165.67653489148591
+        },
+        "der_no_merge": {
+          "missed detection": 31.47153489148591,
+          "false alarm": 0.23000000000000398,
+          "confusion": 38.00900000000003,
+          "total": 165.67653489148591
+        },
+        "overlap_frac": 0.16855266665051274
+      },
+      {
+        "name": "kannada_002",
+        "dur": 206.24,
+        "type": "Near field",
+        "true_k": 6,
+        "est_k": 19,
+        "der": {
+          "missed detection": 45.11799999999998,
+          "false alarm": 0.0040000000000048885,
+          "confusion": 25.985999999999997,
+          "total": 187.67599999999996
+        },
+        "der_no_overlap": {
+          "missed detection": 9.320999999999994,
+          "false alarm": 0.0040000000000048885,
+          "confusion": 16.606000000000012,
+          "total": 122.97300000000006
+        },
+        "der_oracle_k": {
+          "missed detection": 45.11799999999998,
+          "false alarm": 0.0040000000000048885,
+          "confusion": 49.798,
+          "total": 187.67599999999996
+        },
+        "der_silhouette": {
+          "missed detection": 45.11799999999998,
+          "false alarm": 0.0040000000000048885,
+          "confusion": 11.616000000000028,
+          "total": 187.67599999999996
+        },
+        "der_no_merge": {
+          "missed detection": 45.11799999999998,
+          "false alarm": 0.0040000000000048885,
+          "confusion": 25.985999999999997,
+          "total": 187.67599999999996
+        },
+        "overlap_frac": 0.2398840485478975
+      },
+      {
+        "name": "kannada_003",
+        "dur": 211.552,
+        "type": "Near field",
+        "true_k": 4,
+        "est_k": 13,
+        "der": {
+          "missed detection": 77.01816661101834,
+          "false alarm": 0.0,
+          "confusion": 31.522000000000002,
+          "total": 250.8927499165275
+        },
+        "der_no_overlap": {
+          "missed detection": 1.5800000000000267,
+          "false alarm": 0.0,
+          "confusion": 8.779000000000021,
+          "total": 112.62400000000001
+        },
+        "der_oracle_k": {
+          "missed detection": 77.01816661101834,
+          "false alarm": 0.0,
+          "confusion": 45.542,
+          "total": 250.8927499165275
+        },
+        "der_silhouette": {
+          "missed detection": 77.01816661101834,
+          "false alarm": 0.0,
+          "confusion": 44.89099999999999,
+          "total": 250.8927499165275
+        },
+        "der_no_merge": {
+          "missed detection": 77.01816661101834,
+          "false alarm": 0.0,
+          "confusion": 31.522000000000002,
+          "total": 250.8927499165275
+        },
+        "overlap_frac": 0.40183784818608204
+      },
+      {
+        "name": "kannada_004",
+        "dur": 194.24,
+        "type": "Near field",
+        "true_k": 4,
+        "est_k": 7,
+        "der": {
+          "missed detection": 46.038155258764604,
+          "false alarm": 0.0689999999999884,
+          "confusion": 18.949792988313867,
+          "total": 215.7519833055092
+        },
+        "der_no_overlap": {
+          "missed detection": 1.2419999999999778,
+          "false alarm": 0.0689999999999884,
+          "confusion": 6.875579298831397,
+          "total": 131.50967278797998
+        },
+        "der_oracle_k": {
+          "missed detection": 46.038155258764604,
+          "false alarm": 0.0689999999999884,
+          "confusion": 10.274213689482446,
+          "total": 215.7519833055092
+        },
+        "der_silhouette": {
+          "missed detection": 46.038155258764604,
+          "false alarm": 0.0689999999999884,
+          "confusion": 17.572213689482474,
+          "total": 215.7519833055092
+        },
+        "der_no_merge": {
+          "missed detection": 46.038155258764604,
+          "false alarm": 0.0689999999999884,
+          "confusion": 18.949792988313867,
+          "total": 215.7519833055092
+        },
+        "overlap_frac": 0.2694522677122911
+      }
+    ],
+    "summary": {
+      "der": {
+        "DER": 0.3834349966469086,
+        "miss": 0.24347136816756976,
+        "false_alarm": 0.00036951342618137743,
+        "confusion": 0.1395941150531575
+      },
+      "der_no_overlap": {
+        "DER": 0.1656730607879732,
+        "miss": 0.04269065660768354,
+        "false_alarm": 0.0006162586446940435,
+        "confusion": 0.12236614553559562
+      },
+      "der_no_merge": {
+        "DER": 0.3834349966469086,
+        "miss": 0.24347136816756976,
+        "false_alarm": 0.00036951342618137743,
+        "confusion": 0.1395941150531575
+      },
+      "der_silhouette": {
+        "DER": 0.3841745365511862,
+        "miss": 0.24347136816756976,
+        "false_alarm": 0.00036951342618137743,
+        "confusion": 0.14033365495743508
+      },
+      "der_oracle_k": {
+        "DER": 0.4001111750110486,
+        "miss": 0.24347136816756976,
+        "false_alarm": 0.00036951342618137743,
+        "confusion": 0.15627029341729745
+      }
+    },
+    "false_acceptance_clusters": {
+      "cosine": 0.0,
+      "rbf_192": 0.0,
+      "rbf_pca6": 0.0,
+      "quantum_k6": 0.07272727272727272
+    },
+    "n_clusters": 55
+  },
+  "runtime": {
+    "trackA_embed_s": 83.19814359996235,
+    "trackA_windows": 463,
+    "trackA_audio_s": 489.6039374999999,
+    "trackB_embed_s": 148.40730719998828,
+    "trackB_audio_s": 806.8480000000001,
+    "total_s": 361.4244472999999
+  }
+}
